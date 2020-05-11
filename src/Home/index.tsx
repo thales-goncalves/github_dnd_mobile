@@ -1,24 +1,23 @@
 import React, {Fragment, useState} from 'react';
 import moment from 'moment';
-import {SafeAreaView, StatusBar, Text, View} from 'react-native';
+import {
+  SafeAreaView,
+  StatusBar,
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+} from 'react-native';
+
+import LinearGradient from 'react-native-linear-gradient';
 
 import {Formik} from 'formik';
 import * as yup from 'yup';
 
-import Button from '../components/Button';
 import Avatar from '../components/Avatar';
 import Attribute from '../components/Attribute';
 
-import {
-  Header,
-  Content,
-  Footer,
-  Wrapper,
-  Error,
-  TextInput,
-  WrapperInput,
-  Actions,
-} from './styles';
+import {styles, Header, Content, Footer, Wrapper, Error} from './styles';
 
 type GithubUserInfo = {
   avatar_url: String;
@@ -80,63 +79,77 @@ const Home: React.FC = (values) => {
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <SafeAreaView>
-        <Header>
-          <Formik
-            initialValues={{username: ''}}
-            onSubmit={(values) => {
-              getUserInformationAndRepositories(values.username);
-            }}
-            validationSchema={yup.object().shape({
-              username: yup.string().required(),
-            })}>
-            {({
-              values,
-              errors,
-              touched,
-              isValid,
-              handleChange,
-              setFieldTouched,
-              handleSubmit,
-            }) => (
-              <Fragment>
-                <WrapperInput>
+      <SafeAreaView style={styles.container}>
+        <LinearGradient
+          colors={['#02091D', '#15546C']}
+          style={{flex: 1}}
+          start={{x: 0, y: 1}}
+          end={{x: 1, y: 0}}>
+          <Header>
+            <Formik
+              initialValues={{username: ''}}
+              onSubmit={(values) => {
+                getUserInformationAndRepositories(values.username);
+              }}
+              validationSchema={yup.object().shape({
+                username: yup.string().required(),
+              })}>
+              {({
+                values,
+                errors,
+                touched,
+                isValid,
+                handleChange,
+                setFieldTouched,
+                handleSubmit,
+              }) => (
+                <Fragment>
                   <TextInput
+                    style={styles.searchUser}
                     value={values.username}
                     autoCapitalize="none"
                     onChangeText={handleChange('username')}
                     onBlur={() => setFieldTouched('username')}
                     placeholder="Enter the username"
+                    placeholderTextColor="#FFF"
                   />
-                  {touched.username && errors.username && (
+                  {/* {touched.username && errors.username && (
                     <Error>{errors.username}</Error>
-                  )}
-                </WrapperInput>
-                <Actions>
-                  <Button title="Search" onPress={handleSubmit} />
-                </Actions>
-              </Fragment>
-            )}
-          </Formik>
-        </Header>
+                  )} */}
 
-        <Content>
-          <Avatar uri={userInfo.avatar_url} />
-          <Wrapper>
-            <Attribute attributeName="Repos" value={userInfo.public_repos} />
-            <Attribute attributeName="Followers" value={userInfo.followers} />
-            <Attribute attributeName="Following" value={userInfo.following} />
-          </Wrapper>
-        </Content>
-        <Footer>
-          {userRepos.map((repo, key) => (
-            <Text key={key}>
-              {key + 1} - {repo.name}
-            </Text>
-          ))}
-        </Footer>
+                  <TouchableOpacity
+                    style={styles.searchButton}
+                    onPress={handleSubmit}>
+                    <Text style={styles.textButton}>SEARCH</Text>
+                  </TouchableOpacity>
+                </Fragment>
+              )}
+            </Formik>
+          </Header>
+
+          <Content>
+            <Avatar uri={userInfo.avatar_url} />
+            <Wrapper>
+              <Attribute attributeName="Repos" value={userInfo.public_repos} />
+              <Attribute attributeName="Followers" value={userInfo.followers} />
+              <Attribute attributeName="Following" value={userInfo.following} />
+            </Wrapper>
+          </Content>
+          <View style={styles.footer}>
+            <View style={styles.rankRepositories}>
+              {userRepos.map((repo, key) => (
+                <Text
+                  style={{color: '#FFF', fontSize: 20, textAlign: 'left'}}
+                  key={key}>
+                  {key + 1} - {repo.name}
+                </Text>
+              ))}
+            </View>
+          </View>
+        </LinearGradient>
       </SafeAreaView>
     </>
   );
 };
+
 export default Home;

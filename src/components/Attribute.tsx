@@ -13,7 +13,7 @@ const Container = styled.View`
 const Circle = styled.View`
   height: 35px;
   width: 80px;
-  border: 3px solid black;
+  border: 3px solid #1f7686;
   border-radius: 40px;
   display: flex;
   align-items: center;
@@ -21,11 +21,13 @@ const Circle = styled.View`
 `;
 
 const Value = styled.Text`
+  color: white;
   font-size: 20px;
   font-weight: bold;
 `;
 
 const Name = styled.Text`
+  color: white;
   padding-left: 5px;
 `;
 

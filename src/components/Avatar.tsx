@@ -1,16 +1,17 @@
 import React from 'react';
 
 import styled from 'styled-components/native';
+import {StyleSheet} from 'react-native';
 
 const Img = styled.Image`
-  background-color: red;
-  height: 130px;
-  width: 130px;
+  background-color: #4C5972;
+  height: 125px;
+  width: 125px;
   border-radius: 130px;
 `;
 
 const Circle = styled.View`
-  background-color: black;
+  background-color: #1f7686;
   height: 140px;
   width: 140px;
   border-radius: 140px;
@@ -32,5 +33,18 @@ const Avatar = ({uri}: AvatarProps) => {
     </Circle>
   );
 };
+
+const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.46,
+    shadowRadius: 11.14,
+    elevation: 17,
+  },
+});
 
 export default Avatar;
