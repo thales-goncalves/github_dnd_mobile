@@ -1,64 +1,40 @@
 import styled from 'styled-components/native';
-
-import {StyleSheet} from 'react-native';
-
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    color: '#FFF',
-    fontFamily: 'Roboto',
-    // backgroundColor: '#02091D',
-  },
-
-  searchUser: {
-    width: 300,
-    color: '#FFF',
-    fontSize: 15,
-    borderWidth: 2,
-    borderColor: '#1F7686',
-    paddingLeft: 15,
-    paddingTop: 8,
-    paddingBottom: 8,
-  },
-
-  searchButton: {
-    marginLeft: -1,
-    backgroundColor: '#1F7686',
-  },
-
-  textButton: {
-    color: '#FFF',
-    padding: 14,
-    fontWeight: 'bold',
-    fontSize: 15,
-  },
-
-  footer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 10,
-  },
-
-  rankRepositories: {
-    marginTop: 10,
-  },
-});
-
-export const Actions = styled.View`
-  flex: 1;
-  border-width: 1px;
-  border-color: black;
-  justify-content: center;
-  align-self: center;
+// Ícones feitos por <a href="https://www.flaticon.com/br/autores/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/br/" title="Flaticon"> www.flaticon.com</a>
+export const Container = styled.View`
+  background: #353a40;
+  font-family: 'Roboto';
+  height: 100%;
 `;
 
 export const Header = styled.View`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   margin: 10px;
   min-height: 80px;
-  display: flex;
+`;
+
+export const SearchInput = styled.TextInput`
+  color: #fff;
+  font-size: 20px;
+  height: 60px;
+  padding: 15px;
+  width: 300px;
+`;
+
+export const SearchButton = styled.TouchableOpacity`
   align-items: center;
-  flex-direction: row;
+  border-radius: 30px;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  width: 60px;
+`;
+
+export const SearchIcon = styled.Image`
+  width: 30px;
+  height: 30px;
 `;
 
 export const Content = styled.View`
@@ -83,4 +59,5 @@ export const Error = styled.Text`
   font-size: 10;
   color: red;
 `;
+
 export const Title = styled.Text``;

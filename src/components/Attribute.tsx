@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
+import {NeomorphBlur, Neomorph} from 'react-native-neomorph-shadows';
+
 import styled from 'styled-components/native';
 
 const Container = styled.View`
@@ -28,7 +30,7 @@ const Value = styled.Text`
 
 const Name = styled.Text`
   color: white;
-  padding-left: 5px;
+  padding-left: 10px;
 `;
 
 type AttributeProps = {
@@ -39,9 +41,31 @@ type AttributeProps = {
 const Attribute = ({attributeName, value}: AttributeProps) => {
   return (
     <Container>
-      <Circle>
-        <Value>{value}</Value>
-      </Circle>
+      <Neomorph
+        style={{
+          shadowRadius: 7,
+          borderRadius: 100,
+          backgroundColor: '#31343C',
+          height: 35,
+          width: 80,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Neomorph
+          inner
+          style={{
+            shadowRadius: 7,
+            borderRadius: 70,
+            backgroundColor: '#11A8FD',
+            height: 30,
+            width: 70,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Value>{value}</Value>
+        </Neomorph>
+      </Neomorph>
+
       <Name>{attributeName}</Name>
     </Container>
   );

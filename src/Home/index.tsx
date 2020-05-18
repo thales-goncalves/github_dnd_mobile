@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from 'react';
+import {StyleSheet} from 'react-native';
 import moment from 'moment';
 import {
   SafeAreaView,
@@ -7,9 +8,8 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Image,
 } from 'react-native';
-
-import LinearGradient from 'react-native-linear-gradient';
 
 import {Formik} from 'formik';
 import * as yup from 'yup';
@@ -17,7 +17,16 @@ import * as yup from 'yup';
 import Avatar from '../components/Avatar';
 import Attribute from '../components/Attribute';
 
-import {styles, Header, Content, Footer, Wrapper, Error} from './styles';
+import {
+  Header,
+  Content,
+  SearchInput,
+  Container,
+  Wrapper,
+  SearchButton,
+  SearchIcon,
+} from './styles';
+import Neumorph from '../components/Neumorph';
 
 type GithubUserInfo = {
   avatar_url: String;
@@ -79,12 +88,8 @@ const Home: React.FC = (values) => {
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <SafeAreaView style={styles.container}>
-        <LinearGradient
-          colors={['#02091D', '#15546C']}
-          style={{flex: 1}}
-          start={{x: 0, y: 1}}
-          end={{x: 1, y: 0}}>
+      <SafeAreaView>
+        <Container>
           <Header>
             <Formik
               initialValues={{username: ''}}
@@ -104,8 +109,7 @@ const Home: React.FC = (values) => {
                 handleSubmit,
               }) => (
                 <Fragment>
-                  <TextInput
-                    style={styles.searchUser}
+                  <SearchInput
                     value={values.username}
                     autoCapitalize="none"
                     onChangeText={handleChange('username')}
@@ -113,40 +117,42 @@ const Home: React.FC = (values) => {
                     placeholder="Enter the username"
                     placeholderTextColor="#FFF"
                   />
-                  {/* {touched.username && errors.username && (
-                    <Error>{errors.username}</Error>
-                  )} */}
-
-                  <TouchableOpacity
-                    style={styles.searchButton}
-                    onPress={handleSubmit}>
-                    <Text style={styles.textButton}>SEARCH</Text>
-                  </TouchableOpacity>
+                  <Neumorph size={60}>
+                    <SearchButton
+                      onPress={() =>
+                        getUserInformationAndRepositories(values.username)
+                      }>
+                      <SearchIcon
+                        source={require('../assets/png/icons/search.png')}
+                      />
+                    </SearchButton>
+                  </Neumorph>
                 </Fragment>
               )}
             </Formik>
           </Header>
 
           <Content>
-            <Avatar uri={userInfo.avatar_url} />
+            <Neumorph size={150}>
+              <Avatar uri={userInfo.avatar_url} />
+            </Neumorph>
+
             <Wrapper>
               <Attribute attributeName="Repos" value={userInfo.public_repos} />
               <Attribute attributeName="Followers" value={userInfo.followers} />
               <Attribute attributeName="Following" value={userInfo.following} />
             </Wrapper>
           </Content>
-          <View style={styles.footer}>
-            <View style={styles.rankRepositories}>
+          <View>
+            <View>
               {userRepos.map((repo, key) => (
-                <Text
-                  style={{color: '#FFF', fontSize: 20, textAlign: 'left'}}
-                  key={key}>
+                <Text key={key}>
                   {key + 1} - {repo.name}
                 </Text>
               ))}
             </View>
           </View>
-        </LinearGradient>
+        </Container>
       </SafeAreaView>
     </>
   );

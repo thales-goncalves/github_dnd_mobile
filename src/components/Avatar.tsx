@@ -2,22 +2,13 @@ import React from 'react';
 
 import styled from 'styled-components/native';
 import {StyleSheet} from 'react-native';
+import {NeomorphBlur, Neomorph} from 'react-native-neomorph-shadows';
 
-const Img = styled.Image`
-  background-color: #4C5972;
-  height: 125px;
-  width: 125px;
+const AvatarImg = styled.Image`
+  background-color: #4c5972;
+  height: 115px;
+  width: 115px;
   border-radius: 130px;
-`;
-
-const Circle = styled.View`
-  background-color: #1f7686;
-  height: 140px;
-  width: 140px;
-  border-radius: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 type AvatarProps = {
@@ -26,25 +17,46 @@ type AvatarProps = {
 
 const Avatar = ({uri}: AvatarProps) => {
   return (
-    <Circle>
-      <Img
-        source={uri ? {uri: uri.toString()} : require('../assets/avatar.png')}
-      />
-    </Circle>
+    <Neomorph
+      style={{
+        shadowRadius: 7,
+        borderRadius: 100,
+        backgroundColor: '#31343C',
+        width: 160,
+        height: 160,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Neomorph
+        inner
+        style={{
+          shadowRadius: 7,
+          borderRadius: 70,
+          backgroundColor: '#11A8FD',
+          width: 140,
+          height: 140,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <NeomorphBlur
+          style={{
+            shadowRadius: 7,
+            borderRadius: 60,
+            backgroundColor: '#005EA3',
+            width: 120,
+            height: 120,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <AvatarImg
+            source={
+              uri ? {uri: uri.toString()} : require('../assets/avatar.png')
+            }
+          />
+        </NeomorphBlur>
+      </Neomorph>
+    </Neomorph>
   );
 };
-
-const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.46,
-    shadowRadius: 11.14,
-    elevation: 17,
-  },
-});
 
 export default Avatar;
