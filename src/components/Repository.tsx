@@ -1,6 +1,5 @@
 import React from 'react';
-
-import {Neomorph} from 'react-native-neomorph-shadows';
+import {NeomorphBlur, Neomorph} from 'react-native-neomorph-shadows';
 
 import styled from 'styled-components/native';
 
@@ -29,7 +28,7 @@ type AttributeProps = {
   value: String | Number;
 };
 
-const Attribute = ({attributeName, value}: AttributeProps) => {
+const Repostory = ({attributeName, value}: AttributeProps) => {
   return (
     <Container>
       <Neomorph
@@ -38,7 +37,7 @@ const Attribute = ({attributeName, value}: AttributeProps) => {
           borderRadius: 100,
           backgroundColor: '#31343C',
           height: 35,
-          width: 200,
+          width: 350,
           alignItems: 'center',
           flexDirection: 'row',
         }}>
@@ -49,7 +48,7 @@ const Attribute = ({attributeName, value}: AttributeProps) => {
             borderRadius: 70 ,
             backgroundColor: '#11A8FD',
             height: 30,
-            width: 80,
+            width: 40,
             justifyContent: 'center',
             alignItems: 'center',
           }}>
@@ -61,4 +60,4 @@ const Attribute = ({attributeName, value}: AttributeProps) => {
   );
 };
 
-export default Attribute;
+export default Repostory;

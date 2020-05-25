@@ -1,5 +1,4 @@
-import React, {FunctionComponent} from 'react';
-import {View, StyleSheet} from 'react-native';
+import React from 'react';
 import {NeomorphBlur, Neomorph} from 'react-native-neomorph-shadows';
 
 const Neumorph: React.FC<{size: number}> = ({children, size}) => {

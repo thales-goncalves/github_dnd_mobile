@@ -50,9 +50,13 @@ export const Wrapper = styled.View`
   align-self: center;
 `;
 
-export const Footer = styled.View`
+export const Repositories = styled.View`
+  padding-top: 30px;
   margin: 10px;
   min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Error = styled.Text`

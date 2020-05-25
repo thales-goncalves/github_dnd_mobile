@@ -1,21 +1,13 @@
 import React, {Fragment, useState} from 'react';
-import {StyleSheet} from 'react-native';
-import moment from 'moment';
-import {
-  SafeAreaView,
-  StatusBar,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+
+import {SafeAreaView, StatusBar} from 'react-native';
 
 import {Formik} from 'formik';
 import * as yup from 'yup';
 
 import Avatar from '../components/Avatar';
 import Attribute from '../components/Attribute';
+import Repostory from '../components/Repository';
 
 import {
   Header,
@@ -25,6 +17,7 @@ import {
   Wrapper,
   SearchButton,
   SearchIcon,
+  Repositories,
 } from './styles';
 import Neumorph from '../components/Neumorph';
 
@@ -143,15 +136,11 @@ const Home: React.FC = (values) => {
               <Attribute attributeName="Following" value={userInfo.following} />
             </Wrapper>
           </Content>
-          <View>
-            <View>
-              {userRepos.map((repo, key) => (
-                <Text key={key}>
-                  {key + 1} - {repo.name}
-                </Text>
-              ))}
-            </View>
-          </View>
+          <Repositories>
+            {userRepos.map((repo, key) => (
+              <Repostory key={key} attributeName={repo.name} value={key + 1} />
+            ))}
+          </Repositories>
         </Container>
       </SafeAreaView>
     </>

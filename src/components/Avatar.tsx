@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components/native';
-import {StyleSheet} from 'react-native';
+
 import {NeomorphBlur, Neomorph} from 'react-native-neomorph-shadows';
 
 const AvatarImg = styled.Image`
