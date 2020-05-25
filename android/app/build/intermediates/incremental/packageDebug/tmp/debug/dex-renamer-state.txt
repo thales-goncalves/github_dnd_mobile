@@ -1,0 +1,4 @@
+#Sat May 16 01:12:58 BRT 2020
+base.0=D\:\\code\\repository\\personal\\projects\\github_dnd_mobile\\android\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
