@@ -10,16 +10,7 @@ const Container = styled.View`
   align-items: center;
   flex-direction: row;
   padding: 3px 0;
-`;
-
-const Circle = styled.View`
-  height: 35px;
-  width: 80px;
-  border: 3px solid #1f7686;
-  border-radius: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-bottom: 10px;
 `;
 
 const Value = styled.Text`
@@ -30,6 +21,7 @@ const Value = styled.Text`
 
 const Name = styled.Text`
   color: white;
+  font-size: 18px;
   padding-left: 10px;
 `;
 
@@ -47,26 +39,25 @@ const Attribute = ({attributeName, value}: AttributeProps) => {
           borderRadius: 100,
           backgroundColor: '#31343C',
           height: 35,
-          width: 80,
-          justifyContent: 'center',
+          width: 200,
           alignItems: 'center',
+          flexDirection: 'row',
         }}>
         <Neomorph
           inner
           style={{
             shadowRadius: 7,
-            borderRadius: 70,
+            borderRadius: 70 ,
             backgroundColor: '#11A8FD',
             height: 30,
-            width: 70,
+            width: 80,
             justifyContent: 'center',
             alignItems: 'center',
           }}>
           <Value>{value}</Value>
         </Neomorph>
+        <Name>{attributeName}</Name>
       </Neomorph>
-
-      <Name>{attributeName}</Name>
     </Container>
   );
 };
