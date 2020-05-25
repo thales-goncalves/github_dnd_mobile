@@ -28,12 +28,12 @@ type GithubUserInfo = {
   public_repos: Number;
   followers: Number;
   following: Number;
-  created_at: String;
+  updated_at: String;
 };
 
 type GithubUserRepos = {
   name: String;
-  created_at: String;
+  updated_at: String;
 };
 const Home: React.FC = (values) => {
   const [userInfo, setUserInfo] = useState<GithubUserInfo>({
@@ -43,7 +43,7 @@ const Home: React.FC = (values) => {
     public_repos: 0,
     followers: 0,
     following: 0,
-    created_at: '',
+    updated_at: '',
   });
 
   const [userRepos, setUserRepos] = useState<Array<GithubUserRepos>>([]);
@@ -66,10 +66,10 @@ const Home: React.FC = (values) => {
           throw 'No repos from the user.';
         }
         userRepositories.sort((a: GithubUserRepos, b: GithubUserRepos) => {
-          if (a.created_at < b.created_at) {
+          if (a.updated_at < b.updated_at) {
             return 1;
           }
-          if (a.created_at > b.created_at) {
+          if (a.updated_at > b.updated_at) {
             return -1;
           }
           return 0;
